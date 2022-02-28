@@ -44,9 +44,8 @@ const displayPhoneDetail = phone => {
     const div = document.createElement('div')
     div.classList.add('card');
     div.innerHTML = `
-    <div class="shadow bg-body rounded-3">
-        <img src="${phone.image}" class="card-img-top w-25 " alt="...">
-        <div class="card-body ">
+        <img src="${phone.image}" class="card-img-top w-25 mx-auto" alt="...">
+        <div class="card-body mx-auto">
             <h5 class="card-title">Name: ${phone.name}</h5>
             <h5 class="card-title">
             Specification: 
@@ -68,7 +67,7 @@ const displayPhoneDetail = phone => {
             </h6>
             <p class="card-text">Realese Date: ${phone.releaseDate}</p>
         </div>
-    </div>
+    
     
     `;
     phoneDetails.appendChild(div)
