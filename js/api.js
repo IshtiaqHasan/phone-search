@@ -1,6 +1,8 @@
 const searchPhones = () => {
+    document.getElementById('phone-details').innerHTML = '';
     const searchField = document.getElementById('search-box');
     const searchText = searchField.value;
+
     //console.log(searchText);
     searchField.value = '';
     if (searchText == '') {
@@ -57,27 +59,25 @@ const loadPhoneDetail = phoneId => {
 }
 
 const displayPhoneDetail = phone => {
-    //console.log(phone);
+    console.log(phone);
     const phoneDetails = document.getElementById('phone-details');
     phoneDetails.textContent = '';
     const div = document.createElement('div')
     div.classList.add('col');
-    // if (phone.releaseDate == '') {
-    //     div.innerHTML = `
-    //     Release Date: ${phone.releaseDate = NotFound}
-    //     `
-    // }
-    // else {
-    //     div.innerHTML = `
-    //     Release Date: ${phone.releaseDate}
-    //     `
-    // }
     div.innerHTML = `
         <div id="phone-details" class="shadow bg-body rounded-3">
            <img src="${phone.image}" class="card-img-top w-50" alt="...">
            <div class="card-body ps-5">
                 <h5 class="card-title">Name: ${phone.name}</h5>
                 <h5 class="card-title">Brand: ${phone.brand}</h5>
+                <h5> 
+                if(${phone.releaseDate == ""}){
+                 Release Date: Not Found
+                }
+                else{
+                 Release Date: ${phone.releaseDate}
+                }
+                </h5>
                 <h5 class="card-title">
                 Specification: 
                 </h5>
@@ -99,29 +99,26 @@ const displayPhoneDetail = phone => {
                 </h6>              
                 <h5 class="card-text">Others: </h5>
                 <h6 class="card-title">
-                Bluetooth-  ${phone?.others?.Bluetooth}
+                Bluetooth-  ${phone?.others?.Bluetooth ?? "Not Confirmed Yet"}
                 </h6>
                 <h6 class="card-title">
-                GPS-  ${phone?.others?.GPS}
+                GPS-  ${phone?.others?.GPS ?? "Not Confirmed Yet"}
                 </h6>
                 <h6 class="card-title">
-                NFC-  ${phone?.others?.NFC}
+                NFC-  ${phone?.others?.NFC ?? "Not Confirmed Yet"}
                 </h6>
                 <h6 class="card-title">
-                Radio-  ${phone?.others?.Radio}
+                Radio-  ${phone?.others?.Radio ?? "Not Confirmed Yet"}
                 </h6>
                 <h6 class="card-title">
-                USB-  ${phone?.others?.USB}
+                USB-  ${phone?.others?.USB ?? "Not Confirmed Yet"}
                 </h6>
                 <h6 class="card-title">
-                WLAN-  ${phone?.others?.WLAN}
+                WLAN-  ${phone?.others?.WLAN ?? "Not Confirmed Yet"}
                 </h6>
-                <h5>
-                 Release Date: ${phone.releaseDate}
-               </h5>
+               
            </div >
         </div >
-
     `;
     phoneDetails.appendChild(div)
 }
