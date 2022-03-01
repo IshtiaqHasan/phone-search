@@ -19,16 +19,21 @@ const searchPhones = () => {
 const displaySearchResult = data => {
     const searchResult = document.getElementById('search-result');
     searchResult.textContent = '';
+    var str = data;
+    var rest = str.slice(0, 20)
+    //console.log(rest);
+
     if (data == 0) {
         document.getElementById('phoneNot-found').style.display = 'block';
     }
     else {
-        data.forEach(phone => {
+        rest.forEach(phone => {
             //console.log(phone);
             const div = document.createElement('div');
             div.classList.add('col');
             div.innerHTML = `
             <div class="shadow bg-body rounded-3">
+             
                 <img src="${phone.image}" class="card-img-top w-50" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">Brand: ${phone.brand}</h5>
@@ -52,14 +57,24 @@ const loadPhoneDetail = phoneId => {
 }
 
 const displayPhoneDetail = phone => {
-    console.log(phone);
+    //console.log(phone);
     const phoneDetails = document.getElementById('phone-details');
     phoneDetails.textContent = '';
     const div = document.createElement('div')
     div.classList.add('col');
+    // if (phone.releaseDate == '') {
+    //     div.innerHTML = `
+    //     Release Date: ${phone.releaseDate = NotFound}
+    //     `
+    // }
+    // else {
+    //     div.innerHTML = `
+    //     Release Date: ${phone.releaseDate}
+    //     `
+    // }
     div.innerHTML = `
         <div id="phone-details" class="shadow bg-body rounded-3">
-           <img src="${phone.image}" class="card-img-top w-25" alt="...">
+           <img src="${phone.image}" class="card-img-top w-50" alt="...">
            <div class="card-body ps-5">
                 <h5 class="card-title">Name: ${phone.name}</h5>
                 <h5 class="card-title">Brand: ${phone.brand}</h5>
@@ -78,14 +93,35 @@ const displayPhoneDetail = phone => {
                 <h6 class="card-title">
                 Storage-  ${phone.mainFeatures.storage}
                 </h6>
+                </h6>
                 <h6 class="card-title">
                 Sensors-  ${phone.mainFeatures.sensors}
+                </h6>              
+                <h5 class="card-text">Others: </h5>
+                <h6 class="card-title">
+                Bluetooth-  ${phone?.others?.Bluetooth}
                 </h6>
-                <h5 class="card-text">Realese Date: ${phone.releaseDate}</h5>
-           </div>
-        </div>
-        
-    
+                <h6 class="card-title">
+                GPS-  ${phone?.others?.GPS}
+                </h6>
+                <h6 class="card-title">
+                NFC-  ${phone?.others?.NFC}
+                </h6>
+                <h6 class="card-title">
+                Radio-  ${phone?.others?.Radio}
+                </h6>
+                <h6 class="card-title">
+                USB-  ${phone?.others?.USB}
+                </h6>
+                <h6 class="card-title">
+                WLAN-  ${phone?.others?.WLAN}
+                </h6>
+                <h5>
+                 Release Date: ${phone.releaseDate}
+               </h5>
+           </div >
+        </div >
+
     `;
     phoneDetails.appendChild(div)
 }
