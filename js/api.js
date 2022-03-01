@@ -70,13 +70,8 @@ const displayPhoneDetail = phone => {
            <div class="card-body ps-5">
                 <h5 class="card-title">Name: ${phone.name}</h5>
                 <h5 class="card-title">Brand: ${phone.brand}</h5>
-                <h5> 
-                if(${phone.releaseDate == ""}){
-                 Release Date: Not Found
-                }
-                else{
-                 Release Date: ${phone.releaseDate}
-                }
+                <h5>
+                Release Date: ${phone?.releaseDate || "No Yet Confirmed"}
                 </h5>
                 <h5 class="card-title">
                 Specification: 
