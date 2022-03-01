@@ -1,0 +1,10 @@
+#phone-details{
+    display: flex;
+    
+}
+#phoneNot-found{
+    display: none;
+}
+#phoneSearch-error{
+    display: none;
+}
