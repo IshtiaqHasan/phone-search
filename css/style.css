@@ -1,7 +1,11 @@
+/* each phone details */ 
+
 #phone-details{
-    display: flex;
-    
+    display: flex;   
 }
+
+/* display-error */
+
 #phoneNot-found{
     display: none;
 }

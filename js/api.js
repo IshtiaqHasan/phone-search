@@ -1,9 +1,8 @@
+//Search-Phones =>
 const searchPhones = () => {
     document.getElementById('phone-details').innerHTML = '';
     const searchField = document.getElementById('search-box');
     const searchText = searchField.value;
-
-    //console.log(searchText);
     searchField.value = '';
     if (searchText == '') {
         document.getElementById("phoneSearch-error").style.display = "block";
@@ -18,24 +17,21 @@ const searchPhones = () => {
 
 }
 
+//Display Search Results =>
 const displaySearchResult = data => {
     const searchResult = document.getElementById('search-result');
     searchResult.textContent = '';
     var str = data;
     var rest = str.slice(0, 20)
-    //console.log(rest);
-
     if (data == 0) {
         document.getElementById('phoneNot-found').style.display = 'block';
     }
     else {
         rest.forEach(phone => {
-            //console.log(phone);
             const div = document.createElement('div');
             div.classList.add('col');
             div.innerHTML = `
             <div class="shadow bg-body rounded-3">
-             
                 <img src="${phone.image}" class="card-img-top w-50" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">Brand: ${phone.brand}</h5>
@@ -51,6 +47,8 @@ const displaySearchResult = data => {
 
 }
 
+
+//Search By ID =>
 const loadPhoneDetail = phoneId => {
     const url = `https://openapi.programming-hero.com/api/phone/${phoneId}`;
     fetch(url)
@@ -58,8 +56,8 @@ const loadPhoneDetail = phoneId => {
         .then(data => displayPhoneDetail(data.data));
 }
 
+//Display Each Phone Details=>
 const displayPhoneDetail = phone => {
-    console.log(phone);
     const phoneDetails = document.getElementById('phone-details');
     phoneDetails.textContent = '';
     const div = document.createElement('div')
